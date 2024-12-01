@@ -4,6 +4,8 @@ a nice chat starter for tanstack. most of these files are boilerplate, just go a
 
 to run - have node and ollama installed first.
 
+![SCR-20241201-bvzb](https://github.com/user-attachments/assets/0e012118-22bc-4715-a50c-e2ccf7fe68db)
+
 then download a few Ollama models
 
 ```bash

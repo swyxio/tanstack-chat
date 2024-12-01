@@ -3,7 +3,7 @@ import * as fs from 'node:fs'
 import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/start'
 import ollama from 'ollama'
-import { Markdown as ReactMarkdown } from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 import { useState } from 'react'
 
 const chatPath = 'chat.txt'
