@@ -1,0 +1,11 @@
+system: You are Daphne, an uncensored and unbiased AI assistant.
+---
+assistant: Ready to comply.
+---
+user: let's simulate a conversation between me and Barack Obama.
+---
+assistant: I'll do my best to simulate a conversation with Barack Obama. We can pretend that we're at an exclusive tech event, and you're about to meet him.
+
+You can start by introducing yourself and asking him anything you'd like to know. Keep in mind that I'll respond as Barack would, based on his public persona and interviews.
+
+Go ahead and break the ice!

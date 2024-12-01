@@ -7,6 +7,7 @@ import { Markdown as ReactMarkdown } from '../components/Markdown';
 import { useState } from 'react'
 
 const chatPath = 'chat.txt'
+const defaultPrefixPath = 'prefix.txt'
 function hydrateChatHistory(rawtext: string) {
     // console.log('rawtext', rawtext)
     return rawtext.split('\n---\n').map((s) => {
@@ -15,7 +16,7 @@ function hydrateChatHistory(rawtext: string) {
     })
 }
 async function readChatHistory() {
-    const rawtext = await fs.promises.readFile(chatPath, 'utf-8').catch(() => 'system: You are a helpful assistant named swyx.')
+    const rawtext = await fs.promises.readFile(chatPath, 'utf-8').catch(async () => fs.promises.readFile(defaultPrefixPath, 'utf-8'))
     return hydrateChatHistory(rawtext)
 }
 const dehydrateChatHistory = (messages: {role: string, content: string}[]) => messages.map(m => `${m.role}: ${m.content}`).join('\n---\n')
@@ -180,14 +181,15 @@ function Home() {
                     e.preventDefault()
                     setIsSubmitting(true)
                     const data = new FormData(e.target as any).get('chat') as string
-                    setMessages([...messages, { role: 'user', content: data }])
+                    let newMessages = [...messages, { role: 'user', content: data }]
+                    setMessages(newMessages)
                     e.target && (e.target as HTMLFormElement).reset() // Clear the chat textbox
                     if (data) {
                         const newMessage = await callChat({ data: {
                             model: selectedModel,
                             rawChatHistory: dehydrateChatHistory([...messages, { role: 'user', content: data }])
                         } })
-                        const newMessages = [...messages, newMessage]
+                        newMessages = [...newMessages, newMessage]
                         saveChatHistory(newMessages)
                         // router.invalidate() // no longer doing full refresh, spa mode baby
                         setMessages(newMessages)
