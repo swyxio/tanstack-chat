@@ -1,4 +1,4 @@
-# Tanstack Chat
+# Tanstack Chat: Ollama + Fullstack React Template in  200LOC
 
 a nice chat starter for tanstack. most of these files are boilerplate, just go ahead and look at `/app/routes/index.tsx` for the main logic.
 
@@ -25,5 +25,5 @@ npm run dev
 open http://localhost:3000
 ```
 
-The chat is stored in/humanly readable in `/chat.txt`. if this file doesnt exist, it will load from `/prefix.txt` - which is the opening system prompt + user/assistant sequence that is sent to the model. Useful for jailbreaking. (see https://github.com/cognitivecomputations/dolphin-system-messages)
+The chat is stored in/humanly readable in `/chat.txt`. if this file doesnt exist, it will load from `/prefix.txt` - which is the opening system prompt + user/assistant sequence that is sent to the model. Useful for jailbreaking. (see https://www.anthropic.com/research/many-shot-jailbreaking)
 

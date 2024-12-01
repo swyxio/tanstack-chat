@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+.inlineP {
+    display: inline
+}
+
+.inlineP>p:first-child {
+    display: inline
+}
+
+.inlineP>p:last-child {
+    margin-bottom: 0
+}
+

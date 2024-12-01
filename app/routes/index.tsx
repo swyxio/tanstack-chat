@@ -9,7 +9,6 @@ import { useState } from 'react'
 const chatPath = 'chat.txt'
 const defaultPrefixPath = 'prefix.txt'
 function hydrateChatHistory(rawtext: string) {
-    // console.log('rawtext', rawtext)
     return rawtext.split('\n---\n').map((s) => {
         const arr = s.split(':')
         return { role: arr[0], content: arr.slice(1).join(':').trim() }
@@ -28,16 +27,13 @@ const callChat = createServerFn({ method: 'POST' })
     .validator((data: {model?: string, rawChatHistory: string}) => data)
     .handler(async ({ data }) => {
         let messages = hydrateChatHistory(data.rawChatHistory)
-        // console.log('messages.slice(-1)[0].role', messages.slice(-1)[0].role)
         if (messages.slice(-1)[0].role === 'assistant') {
             messages.push({ role: 'user', content: "[We are switching roles, so simulate the user's next response to your own conversation. do not preamble, just start with the simulated response]" })
         }
-        // console.log('callxchat', messages)
         const response = await ollama.chat({
             model: data.model || 'llama3.2',
             messages
         })
-        // console.log('callxchat', response.message.content)
         return { role: 'assistant', content: response.message.content }
     })
 
@@ -70,7 +66,7 @@ function Home() {
     const [selectedModel, setSelectedModel] = useState('llama3.2:latest')
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '400px' }}>
-            <span>Ollama Models (<a href="https://ollama.com/models">see list</a>): 
+            <span className="text-lg">Ollama Models (<a href="https://ollama.com/models">see list</a>): 
             <select
                 value={selectedModel}
                 onChange={(e) => setSelectedModel(e.target.value)}

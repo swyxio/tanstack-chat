@@ -38,17 +38,6 @@ import {
       <html>
         <head>
           <Meta />
-          <style>
-            {`.inlineP {
-              display: inline
-            }
-            .inlineP > p:first-child {
-              display: inline
-            }
-            .inlineP > p:last-child {
-              margin-bottom: 0
-            }`}
-          </style>
         </head>
         <body>
           {children}

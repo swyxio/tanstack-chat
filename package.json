@@ -17,6 +17,7 @@
     "vite": "^5.4.8"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.0.0-beta.4",
     "@tanstack/react-router": "^1.85.0",
     "@tanstack/router-devtools": "^1.85.0",
     "@tanstack/start": "^1.85.0",
@@ -24,6 +25,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
+    "tailwindcss": "^4.0.0-beta.4",
     "vinxi": "^0.4.3"
   },
   "license": "MIT"
